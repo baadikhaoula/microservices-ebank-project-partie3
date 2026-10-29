@@ -13,3 +13,6 @@ export class LoadingService {
   }
 
 }
+
+export class Loading {
+}
