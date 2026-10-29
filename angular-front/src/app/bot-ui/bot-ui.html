@@ -1,18 +1,24 @@
 <div class="p-3">
   <div class="card-body">
-    <input [(ngModel)]="query" type="text" class="form-control" style="display: inline; width: 90%;" placeholder="Search..." />
-    <button  class="btn btn-primary" style="display: inline; width: 4%; margin-left: 2%;" (click)="askAgent()">
+    <input [(ngModel)]="query" type="text" class="form-control" style="display: inline; width: 90%;" placeholder="Posez votre question..." />
+    <button class="btn btn-primary" style="display: inline; width: 4%; margin-left: 2%;" (click)="askAgent()">
       <i class="bi bi-search"></i>
     </button>
-    @if(loadingService.isLoading()){
-      <div class="spinner-border text-success" role="status">
+
+    @if (loadingService.isLoading()) {
+      <div class="spinner-border text-success ms-2" role="status" style="display: inline-block;">
         <span class="visually-hidden">Loading...</span>
       </div>
     }
   </div>
+
   <div class="card-body">
-    @if(response$ | async ; as botResponse){
-      <markdown [data]="botResponse" ></markdown>
+    @if (response$ | async; as botResponse) {
+      <markdown [data]="botResponse"></markdown>
+    } @else {
+      <p class="text-muted text-center mt-3">
+        Aucune réponse pour le moment. Posez votre question ci-dessus.
+      </p>
     }
   </div>
 </div>
